@@ -1,0 +1,1 @@
+This repo is to learn more about shell and git 
