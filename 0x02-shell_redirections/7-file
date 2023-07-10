@@ -1,4 +1,2 @@
 #!/bin/bash
-
-# Create a file named \*\\'"Best School"\'\\*$\?\*\*\*\*\*:) and write "Best School" to it
 echo "Best School" > '\*\\'"Best School"\'\\*\$\\?\\*\\*\\*\\*\\*:\\)'
