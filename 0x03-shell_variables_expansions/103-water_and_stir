@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%0\n" $(( $((5#$(echo $WATER | tr water 01234))) + $((5#$(echo $STIR | tr stir. 01234))) )) | tr 01234567 bestchol1
+echo "ibase=water;$WATER+ibase=stir;$STIR" | bc | xargs printf "%s%s%s\n" $WATER $STIR $(echo "ibase=10;obase=bestchol;$(cat)" | bc <<< $(cat))
