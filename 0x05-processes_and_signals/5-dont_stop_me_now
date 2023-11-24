@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#terminate a loop
+kill -0 4-to_infinity_and_beyond
