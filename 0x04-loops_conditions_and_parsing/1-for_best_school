@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#for loop to print best school
+for i in {1..5}; do
+	echo "Best School"
+done
