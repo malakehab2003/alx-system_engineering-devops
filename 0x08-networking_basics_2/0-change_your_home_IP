@@ -2,6 +2,6 @@
 # localhost resolves to 127.0.0.2
 # facebook.com resolves to 8.8.8.8.
 cp /etc/hosts ~/hosts.new
-echo "localhost		localhost" > ~/hosts.new
+echo "localhost  localhost" > ~/hosts.new
 echo "facebook.com	8.8.8.8" > ~/hosts.new
 cp -f ~/hosts.new /etc/hosts
