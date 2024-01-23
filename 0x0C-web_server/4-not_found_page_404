@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
-# Configuring Nginx with a custom 404 page
+# Configure Nginx for a custom 404 page
 
 # Updating Packages before performing installations
 sudo apt-get update
 sudo apt-get install -y nginx
 
-# Creating an index.html page
+# Creating an index.html page (you can skip this if not needed)
 echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
 
-# Creating a custom 404 error page
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
-
-# Configuring Nginx with a custom 404 page
+# Creating the Nginx configuration for the custom 404 page
 echo "server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -20,20 +17,23 @@ echo "server {
     index index.html;
 
     location /redirect_me {
-        return 301 https://github.com/besthor;
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 
+    # Custom 404 page configuration
     error_page 404 /404.html;
     location = /404.html {
-        root /var/www/html;
         internal;
+        root /var/www/html;
     }
+
+    # Other server configurations can be added here if needed
 }" | sudo tee /etc/nginx/sites-available/default > /dev/null
 
-# Removing the existing symbolic link
-sudo rm /etc/nginx/sites-enabled/default
+# Removing the default symbolic link (if it exists)
+sudo rm -f /etc/nginx/sites-enabled/default
 
-# Creating a new symbolic link to enable the site configuration
+# Creating a symbolic link to enable the site configuration
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 
 # Testing configurations for syntax errors
