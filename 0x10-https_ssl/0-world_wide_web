@@ -1,28 +1,18 @@
 #!/usr/bin/env bash
 # Display information about subdomains.
 
-get_record_info() {
-    local domain=$1
-    local subdomain=$2
-
-    record_type=$(dig +short -t A $subdomain.$domain)
-    destination=$(dig +short -t A $subdomain.$domain)
-
-    echo "The subdomain $subdomain is a A record and points to $destination"
+domain_information () {
+    line=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
+    echo "$2 $line" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
 }
 
-main() {
-    local domain=$1
-    local subdomain=$2
-
-    if [ -z "$subdomain" ]; then
-        subdomains=("www" "lb-01" "web-01" "web-02")
-        for sub in "${subdomains[@]}"; do
-            get_record_info $domain $sub
-        done
-    else
-        get_record_info $domain $subdomain
-    fi
-}
-
-main "$@"
+if [ "$#" == 1 ]
+then
+  domain_information "$1" "www"
+  domain_information "$1" "lb-01"
+  domain_information "$1" "web-01"
+  domain_information "$1" "web-02"
+elif [ "$#" == 2 ]
+then
+  domain_information "$1" "$2"
+fi
