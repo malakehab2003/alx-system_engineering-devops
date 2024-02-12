@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# run the command whoami with the passed user as arg
+
+if [ $# -ne 1 ]
+then
+	exit 1
+fi
+
+username=$1
+sudo -u "$username" whoami
