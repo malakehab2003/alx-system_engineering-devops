@@ -9,7 +9,7 @@ if __name__ == '__main__':
     # get the id as a param
     if len(sys.argv) != 2:
         print("usage: app user_id")
-        exit (1)
+        exit(1)
 
     # get the id and the urls
     user_id = sys.argv[1]
@@ -28,15 +28,15 @@ if __name__ == '__main__':
     # get neded data from dicts
     name = dict_user_data.get("name")
     tasks = len(dict_todo_data)
-    
+
     # get the number of completed tasks
     comp_tasks = 0
     for item in dict_todo_data:
-        if item["completed"] == True:
+        if item["completed"] is True:
             comp_tasks += 1
 
     # format the output
     print(f"Employee {name} is done with tasks({comp_tasks}/{tasks}):")
     for item in dict_todo_data:
-        if item["completed"] == True:
+        if item["completed"] is True:
             print("\t {}".format(item["title"]))
