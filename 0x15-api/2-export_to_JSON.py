@@ -33,13 +33,8 @@ if __name__ == '__main__':
     # open file and convert data to json format
     file_name = f"{user_id}.json"
     with open(file_name, "w") as file:
-        for i in dict_todo_data:
-            json.dump({
-                user_id: [
-                    {
-                        "task": i.get("title"),
-                        "completed": i.get("completed"),
-                        "username": name
-                    }
-                ]
-            }, file)
+        json.dump({user_id: [{
+                "task": t.get("title"),
+                "completed": t.get("completed"),
+                "username": name
+            } for t in dict_todo_data]}, file)
