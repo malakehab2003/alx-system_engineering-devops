@@ -28,7 +28,6 @@ if __name__ == '__main__':
 
     # get neded data from dicts
     name = dict_user_data.get("username")
-    print(name)
     tasks = len(dict_todo_data)
 
     # open file and convert data to json format
