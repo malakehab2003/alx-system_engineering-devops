@@ -39,7 +39,6 @@ if __name__ == '__main__':
             f'{dict_todo_data[i].get("completed")}',
             f'{dict_todo_data[i].get("title")}'
         ]
-        
         list_data.append(row_data)
 
     # write data in csv file
