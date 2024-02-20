@@ -34,10 +34,10 @@ if __name__ == '__main__':
     list_data = []
     for i in range(len(dict_todo_data)):
         row_data = [
-            str(dict_todo_data[i].get("userId")),
-            str(name),
-            str(dict_todo_data[i].get("completed")),
-            str(dict_todo_data[i].get("title"))
+            f'{dict_todo_data[i].get("userId")}',
+            f'{name}',
+            f'{dict_todo_data[i].get("completed")}',
+            f'{dict_todo_data[i].get("title")}'
         ]
         
         list_data.append(row_data)
@@ -46,5 +46,5 @@ if __name__ == '__main__':
     file_name = f"{user_id}.csv"
 
     with open(file_name, "w", newline='') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         writer.writerows(list_data[0:])
