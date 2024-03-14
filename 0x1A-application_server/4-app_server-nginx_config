@@ -14,8 +14,17 @@ server {
         proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
     }
 
-    location /api {
-        proxy_pass http://127.0.0.1:5002/api;
+    location /api/ {
+        proxy_pass http://127.0.0.1:5002/;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:5003/2-hbnb;
+    }
+
+    location /static/ {
+        alias /AirBnB_clone_v4/web_dynamic/;
+        proxy_pass http://127.0.0.1:5003;
     }
 
     location /hbnb_static {
